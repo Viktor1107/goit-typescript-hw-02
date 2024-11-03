@@ -1,14 +1,18 @@
 import s from "./SearchBar.module.css";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-export default function SearchForm({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState("");
+interface SearchFormProps {
+  onSearch: (searchTerm: string) => void;
+}
 
-  const handleChange = (evt) => {
+export default function SearchForm({ onSearch }: SearchFormProps) {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(evt.target.value);
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     onSearch(searchTerm);
   };

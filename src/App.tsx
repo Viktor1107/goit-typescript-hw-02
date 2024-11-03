@@ -1,26 +1,37 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import SearchForm from "./components/SearchBar/SearchBar.jsx";
-import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
-import ImageModal from "./components/ImageModal/ImageModal.jsx";
-import { fetchArticlesWithTopic } from "./articles-api.js/articles-api.js";
-import Loader from "./components/Loader/Loader.jsx";
+import SearchForm from "./components/SearchBar/SearchBar.js";
+import ImageGallery from "./components/ImageGallery/ImageGallery.js";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage.js";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.js";
+import ImageModal from "./components/ImageModal/ImageModal.js";
+import { fetchArticlesWithTopic } from "./articles-api.ts/articles-api.js";
+import Loader from "./components/Loader/Loader.js";
+
+interface ImageData {
+  id: string;
+  url: string;
+  title: string;
+}
+
+interface FetchResponse {
+  results: ImageData[];
+  total_pages: number;
+}
 
 const App = () => {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState<ImageData[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
 
   useEffect(() => {
     const fetchImages = async () => {
       setLoading(true);
-      setError(false);
+      setError(null);
 
       try {
         const data = await fetchArticlesWithTopic(page, query);
@@ -42,7 +53,7 @@ const App = () => {
     }
   }, [query, page]);
 
-  const handleSearch = (searchTerm) => {
+  const handleSearch = (searchTerm: string) => {
     if (searchTerm.trim() === "") {
       toast.error("Please enter a search term.");
       return;
@@ -56,7 +67,7 @@ const App = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: ImageData) => {
     setSelectedImage(image);
   };
 
