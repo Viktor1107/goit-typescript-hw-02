@@ -1,0 +1,32 @@
+.galleryWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.gallery {
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.galleryList {
+  width: 400px;
+  height: 260;
+  border: 1px solid#808080;
+  width: 360px;
+  overflow: hidden;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+.galleryList:hover {
+  transform: scale(1.1);
+  box-shadow: 20 18px 18px rgba(109, 96, 50, 0.2);
+}
