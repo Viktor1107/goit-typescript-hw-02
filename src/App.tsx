@@ -25,6 +25,7 @@ const App = () => {
 
       try {
         const data: FetchResponse = await fetchArticlesWithTopic(page, query);
+        console.log(data);
         if (data.results.length === 0) {
           toast.error("No images found!");
         } else {
