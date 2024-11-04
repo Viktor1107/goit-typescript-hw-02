@@ -29,7 +29,7 @@ const App = () => {
         if (data.results.length === 0) {
           toast.error("No images found!");
         } else {
-          setImages((prevImages) => [
+          setImages((prevImages): Image[] => [
             ...prevImages,
             ...(data.results as Image[]),
           ]);
