@@ -7,16 +7,16 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import { fetchArticlesWithTopic } from "./articles-api.ts/articles-api";
 import Loader from "./components/Loader/Loader";
-import { FetchResponse, Image } from "./types/types";
+import { FetchResponse, GalleryImage } from "./types/types";
 
 const App: React.FC = () => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -57,7 +57,7 @@ const App: React.FC = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (image: Image) => {
+  const openModal = (image: GalleryImage) => {
     setSelectedImage(image);
   };
 

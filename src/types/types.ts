@@ -1,4 +1,4 @@
-export interface Image {
+export interface GalleryImage {
   id: string;
   urls: {
     small: string;
@@ -8,6 +8,6 @@ export interface Image {
 }
 
 export interface FetchResponse {
-  results: Image[];
+  results: GalleryImage[];
   total_pages: number;
 }

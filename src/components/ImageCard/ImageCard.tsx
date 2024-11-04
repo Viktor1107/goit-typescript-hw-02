@@ -1,8 +1,8 @@
 import s from "./ImageCard.module.css";
-import { Image } from "../../types/types";
+import { GalleryImage } from "../../types/types";
 
 interface ImageCardProps {
-  image: Image;
+  image: GalleryImage;
   onClick: () => void;
 }
 

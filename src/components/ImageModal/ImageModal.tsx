@@ -1,11 +1,11 @@
 import Modal from "react-modal";
 import s from "./ImageModal.module.css";
-import { Image } from "../../types/types";
+import { GalleryImage } from "../../types/types";
 
 Modal.setAppElement("#root");
 
 interface ImageModalProps {
-  image: Image | null;
+  image: GalleryImage | null;
   onClose: () => void;
 }
 
