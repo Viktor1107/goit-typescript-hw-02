@@ -29,10 +29,7 @@ const App = () => {
         if (data.results.length === 0) {
           toast.error("No images found!");
         } else {
-          setImages((prevImages): Image[] => [
-            ...prevImages,
-            ...(data.results as Image[]),
-          ]);
+          setImages((prevImages: Image[]) => [...prevImages, ...data.results]);
           setTotalPages(data.total_pages);
         }
       } catch {
