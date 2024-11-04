@@ -25,9 +25,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, onClose }) => {
             alt={image.alt_description || "Image"}
           />
         )}
-        <button className={s.btn} onClick={onClose}>
+        {/* <button className={s.btn} onClick={onClose}>
           Close
-        </button>
+        </button> */}
       </div>
     </Modal>
   );
