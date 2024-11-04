@@ -1,14 +1,8 @@
 import axios from "axios";
-import { Image } from "../types/types";
+import { FetchResponse, Image } from "../types/types";
 
 const URL = "https://api.unsplash.com/search/photos";
 const KEY = "Psa5IEQAXOcwvVk6JWureFxm1ckcR7EUcSS1G9XbrDA";
-
-interface FetchResponse {
-  results: Image[];
-  total: number;
-  total_page: number;
-}
 
 export const fetchArticlesWithTopic = async (
   page: number,

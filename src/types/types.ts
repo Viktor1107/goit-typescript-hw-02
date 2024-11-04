@@ -6,3 +6,8 @@ export interface Image {
   };
   alt_description: string | null;
 }
+
+export interface FetchResponse {
+  results: Image[];
+  total_pages: number;
+}

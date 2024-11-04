@@ -7,26 +7,16 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.js";
 import ImageModal from "./components/ImageModal/ImageModal.js";
 import { fetchArticlesWithTopic } from "./articles-api.ts/articles-api.js";
 import Loader from "./components/Loader/Loader.js";
-
-interface ImageData {
-  id: string;
-  url: string;
-  title: string;
-}
-
-interface FetchResponse {
-  results: ImageData[];
-  total_pages: number;
-}
+import { FetchResponse, Image } from "./types/types.js";
 
 const App = () => {
-  const [images, setImages] = useState<ImageData[]>([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -34,7 +24,7 @@ const App = () => {
       setError(null);
 
       try {
-        const data = await fetchArticlesWithTopic(page, query);
+        const data: FetchResponse = await fetchArticlesWithTopic(page, query);
         if (data.results.length === 0) {
           toast.error("No images found!");
         } else {
@@ -67,7 +57,7 @@ const App = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (image: ImageData) => {
+  const openModal = (image: Image) => {
     setSelectedImage(image);
   };
 
