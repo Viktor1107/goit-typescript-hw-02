@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import SearchForm from "./components/SearchBar/SearchBar.js";
-import ImageGallery from "./components/ImageGallery/ImageGallery.js";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage.js";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.js";
-import ImageModal from "./components/ImageModal/ImageModal.js";
-import { fetchArticlesWithTopic } from "./articles-api.ts/articles-api.js";
-import Loader from "./components/Loader/Loader.js";
-import { FetchResponse, Image } from "./types/types.js";
+import SearchForm from "./components/SearchBar/SearchBar";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/ImageModal/ImageModal";
+import { fetchArticlesWithTopic } from "./articles-api.ts/articles-api";
+import Loader from "./components/Loader/Loader";
+import { FetchResponse, Image } from "./types/types";
 
-const App = () => {
+const App: React.FC = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,11 +25,10 @@ const App = () => {
 
       try {
         const data: FetchResponse = await fetchArticlesWithTopic(page, query);
-        console.log(data);
         if (data.results.length === 0) {
           toast.error("No images found!");
         } else {
-          setImages((prevImages: Image[]) => [...prevImages, ...data.results]);
+          setImages((prevImages) => [...prevImages, ...data.results]);
           setTotalPages(data.total_pages);
         }
       } catch {

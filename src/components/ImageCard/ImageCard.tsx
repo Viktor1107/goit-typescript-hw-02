@@ -1,12 +1,12 @@
-import { Image } from "../../types/types";
 import s from "./ImageCard.module.css";
+import { Image } from "../../types/types";
 
 interface ImageCardProps {
   image: Image;
   onClick: () => void;
 }
 
-export default function ImageCard({ image, onClick }: ImageCardProps) {
+const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {
   return (
     <div className={s.gallery}>
       <li className={s.imgWrap} onClick={onClick}>
@@ -18,4 +18,6 @@ export default function ImageCard({ image, onClick }: ImageCardProps) {
       </li>
     </div>
   );
-}
+};
+
+export default ImageCard;

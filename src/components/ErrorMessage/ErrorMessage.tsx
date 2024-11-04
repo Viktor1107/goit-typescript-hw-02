@@ -1,7 +1,9 @@
-interface MessageProps {
+interface ErrorMessageProps {
   message: string;
 }
 
-export default function ErrorMessage({ message }: MessageProps) {
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
   return <div>{message}</div>;
-}
+};
+
+export default ErrorMessage;

@@ -9,7 +9,7 @@ interface ImageModalProps {
   onClose: () => void;
 }
 
-export default function ImageModal({ image, onClose }: ImageModalProps) {
+const ImageModal: React.FC<ImageModalProps> = ({ image, onClose }) => {
   return (
     <Modal
       className={s.modal}
@@ -31,4 +31,6 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
       </div>
     </Modal>
   );
-}
+};
+
+export default ImageModal;

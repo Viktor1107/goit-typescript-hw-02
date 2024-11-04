@@ -1,18 +1,18 @@
 import s from "./SearchBar.module.css";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
 
 interface SearchFormProps {
   onSearch: (searchTerm: string) => void;
 }
 
-export default function SearchForm({ onSearch }: SearchFormProps) {
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(evt.target.value);
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     onSearch(searchTerm);
   };
@@ -35,4 +35,6 @@ export default function SearchForm({ onSearch }: SearchFormProps) {
       </form>
     </header>
   );
-}
+};
+
+export default SearchForm;

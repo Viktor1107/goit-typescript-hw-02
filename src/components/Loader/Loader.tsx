@@ -1,6 +1,6 @@
 import { Audio } from "react-loader-spinner";
 
-export default function Loader() {
+const Loader: React.FC = () => {
   return (
     <div>
       <Audio
@@ -14,4 +14,6 @@ export default function Loader() {
       />
     </div>
   );
-}
+};
+
+export default Loader;
